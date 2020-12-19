@@ -1,3 +1,4 @@
+import { logarTempoDeExecucao } from "../helpers/decorators/index";
 export default abstract class View<T> {
   protected _elemento: JQuery;
   private _escapar: boolean;
@@ -6,7 +7,7 @@ export default abstract class View<T> {
     this._elemento = $(seletor);
     this._escapar = escapar;
   }
-
+  @logarTempoDeExecucao(true)
   update(model: T): void {
     let template = this.template(model);
     if (this._escapar) {
